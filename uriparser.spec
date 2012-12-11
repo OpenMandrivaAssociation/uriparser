@@ -87,3 +87,14 @@ rm -rf %{buildroot}%{_docdir}/uriparser-doc
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 
+
+
+%changelog
+* Fri Jan 20 2012 Alexander Khrukin <akhrukin@mandriva.org> 0.7.6-1
++ Revision: 762985
+- version update 0.7.6
+
+* Thu Dec 23 2010 Oden Eriksson <oeriksson@mandriva.com> 0.7.5-1mdv2011.0
++ Revision: 624123
+- import uriparser
+
