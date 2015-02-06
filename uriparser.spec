@@ -5,7 +5,7 @@
 Summary:	URI parsing library - RFC 3986
 Name:		uriparser
 Version:	0.7.6
-Release:	1
+Release:	2
 Group:		System/Libraries
 License:	BSD
 URL:		http://uriparser.sourceforge.net
