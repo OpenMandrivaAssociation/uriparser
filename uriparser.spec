@@ -4,12 +4,12 @@
 
 Summary:	URI parsing library - RFC 3986
 Name:		uriparser
-Version:	0.7.6
-Release:	2
+Version:	0.8.5
+Release:	1
 Group:		System/Libraries
 License:	BSD
 URL:		http://uriparser.sourceforge.net
-Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
+Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Patch0:		uriparser-0.7.5-doc_Makefile_in.patch
 BuildRequires:	cpptest-devel
 BuildRequires:	doxygen
@@ -42,7 +42,7 @@ that use uriparser.
 
 %prep
 
-%setup -q
+%setup -qn %{name}-%{name}-%{version}
 sed -i 's/\r//' THANKS
 sed -i 's/\r//' COPYING
 iconv -f iso-8859-1 -t utf-8 -o THANKS{.utf8,}
@@ -76,6 +76,9 @@ make check
 find %{buildroot} -name '*.la' -exec rm -f {} ';'
 rm -rf %{buildroot}%{_docdir}/uriparser-doc
 
+%files
+%{_bindir}/uriparse
+
 %files -n %{libname}
 %doc THANKS AUTHORS COPYING ChangeLog
 %{_libdir}/*.so.%{major}*
@@ -86,15 +89,3 @@ rm -rf %{buildroot}%{_docdir}/uriparser-doc
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
-
-
-
-%changelog
-* Fri Jan 20 2012 Alexander Khrukin <akhrukin@mandriva.org> 0.7.6-1
-+ Revision: 762985
-- version update 0.7.6
-
-* Thu Dec 23 2010 Oden Eriksson <oeriksson@mandriva.com> 0.7.5-1mdv2011.0
-+ Revision: 624123
-- import uriparser
-
