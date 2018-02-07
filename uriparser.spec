@@ -50,8 +50,9 @@ mv THANKS{.utf8,}
 
 %build
 autoreconf -fi
-%configure2_5x \
- --disable-static
+%configure \
+ --disable-static \
+ --enable-char
 pushd doc
 #    autoreconf -fi
     # Remove qhelpgenerator dependency, by commenting these lines in
