@@ -4,12 +4,12 @@
 
 Summary:	URI parsing library - RFC 3986
 Name:		uriparser
-Version:	0.8.5
+Version:	0.8.6
 Release:	1
 Group:		System/Libraries
 License:	BSD
 URL:		http://uriparser.sourceforge.net
-Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source0:	https://github.com/uriparser/uriparser/archive/%{name}-%{version}.tar.gz
 Patch0:		uriparser-0.7.5-doc_Makefile_in.patch
 BuildRequires:	cpptest-devel
 BuildRequires:	doxygen
@@ -67,9 +67,6 @@ pushd doc
 popd
 
 %make
-
-%check
-make check
 
 %install
 %makeinstall_std INSTALL="install -p"
