@@ -42,7 +42,7 @@ that use uriparser.
 
 %prep
 
-%setup -qn %{name}-%{name}-%{version}
+%setup -qn %{name}-%{version}
 sed -i 's/\r//' THANKS
 sed -i 's/\r//' COPYING
 iconv -f iso-8859-1 -t utf-8 -o THANKS{.utf8,}
