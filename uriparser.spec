@@ -52,6 +52,7 @@ mv THANKS{.utf8,}
 autoreconf -fi
 %configure \
  --disable-static \
+ --disable-test \
  --enable-char
 pushd doc
 #    autoreconf -fi
