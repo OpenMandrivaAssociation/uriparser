@@ -9,7 +9,7 @@ Release:	1
 Group:		System/Libraries
 License:	BSD
 URL:		http://uriparser.sourceforge.net
-Source0:	https://github.com/uriparser/uriparser/archive/%{name}-%{version}.tar.gz
+Source0:	https://github.com/uriparser/uriparser/archive/%{name}-%{version}.tar.bz2
 Patch0:		uriparser-0.7.5-doc_Makefile_in.patch
 BuildRequires:	cpptest-devel
 BuildRequires:	doxygen
