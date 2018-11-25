@@ -4,12 +4,12 @@
 
 Summary:	URI parsing library - RFC 3986
 Name:		uriparser
-Version:	0.8.6
+Version:	0.9.0
 Release:	1
 Group:		System/Libraries
 License:	BSD
 URL:		http://uriparser.sourceforge.net
-Source0:	https://github.com/uriparser/uriparser/archive/%{name}-%{version}.tar.gz
+Source0:	https://github.com/uriparser/uriparser/archive/%{name}-%{version}.tar.bz2
 Patch0:		uriparser-0.7.5-doc_Makefile_in.patch
 BuildRequires:	cpptest-devel
 BuildRequires:	doxygen
@@ -42,7 +42,7 @@ that use uriparser.
 
 %prep
 
-%setup -qn %{name}-%{name}-%{version}
+%setup -qn %{name}-%{version}
 sed -i 's/\r//' THANKS
 sed -i 's/\r//' COPYING
 iconv -f iso-8859-1 -t utf-8 -o THANKS{.utf8,}
@@ -52,6 +52,7 @@ mv THANKS{.utf8,}
 autoreconf -fi
 %configure \
  --disable-static \
+ --disable-test \
  --enable-char
 pushd doc
 #    autoreconf -fi
