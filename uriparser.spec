@@ -16,6 +16,8 @@ BuildRequires:	cpptest-devel
 BuildRequires:	doxygen
 BuildRequires:	graphviz
 BuildRequires:	pkgconfig
+BuildRequires:	gtest
+BuildRequires:	pkgconfig(gtest)
 
 %description
 Uriparser is a strictly RFC 3986 compliant URI parsing library written in C.
