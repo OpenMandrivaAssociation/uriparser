@@ -11,7 +11,7 @@ License:	BSD
 URL:		http://uriparser.sourceforge.net
 Source0:	https://github.com/uriparser/uriparser/archive/%{name}-%{version}.tar.bz2
 Patch0:		uriparser-0.7.5-doc_Makefile_in.patch
-BuildRequires: cmake
+BuildRequires:  cmake
 BuildRequires:	cpptest-devel
 BuildRequires:	doxygen
 BuildRequires:	graphviz
@@ -81,6 +81,7 @@ rm -rf %{buildroot}%{_docdir}/uriparser-doc
 %files -n %{libname}
 %doc THANKS AUTHORS COPYING ChangeLog
 %{_libdir}/*.so.%{major}*
+%{_libdir}/cmake/%{name}-%{version}/*
 
 %files -n %{develname}
 #doc doc/html
