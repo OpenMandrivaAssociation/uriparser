@@ -11,6 +11,7 @@ License:	BSD
 URL:		http://uriparser.sourceforge.net
 Source0:	https://github.com/uriparser/uriparser/archive/%{name}-%{version}.tar.bz2
 Patch0:		uriparser-0.7.5-doc_Makefile_in.patch
+BuildRequires: cmake
 BuildRequires:	cpptest-devel
 BuildRequires:	doxygen
 BuildRequires:	graphviz
@@ -49,28 +50,28 @@ iconv -f iso-8859-1 -t utf-8 -o THANKS{.utf8,}
 mv THANKS{.utf8,}
 
 %build
-autoreconf -fi
-%configure \
- --disable-static \
- --disable-test \
- --enable-char
-pushd doc
+	
+%cmake
+	
+%make_build
+
+#pushd doc
 #    autoreconf -fi
     # Remove qhelpgenerator dependency, by commenting these lines in
     # Doxygen.in
     ## .qch output
     ## QCH_FILE = "../uriparser-doc-0.7.5.qch"
     ## QHG_LOCATION = "qhelpgenerator"
-    sed -i 's/^# .qch output.*//' Doxyfile.in
-    sed -i 's/^QCH.*//' Doxyfile.in
-    sed -i 's/^QHG.*//' Doxyfile.in
-    %make
-popd
+    #sed -i 's/^# .qch output.*//' Doxyfile.in
+    #sed -i 's/^QCH.*//' Doxyfile.in
+    #sed -i 's/^QHG.*//' Doxyfile.in
+    #make
+#popd
 
-%make
-
+	
 %install
-%makeinstall_std INSTALL="install -p"
+	
+%make_install
 
 find %{buildroot} -name '*.la' -exec rm -f {} ';'
 rm -rf %{buildroot}%{_docdir}/uriparser-doc
