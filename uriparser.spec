@@ -16,7 +16,6 @@ BuildRequires:	cpptest-devel
 BuildRequires:	doxygen
 BuildRequires:	graphviz
 BuildRequires:	pkgconfig
-BuildRequires:	gtest
 BuildRequires:	pkgconfig(gtest)
 
 %description
