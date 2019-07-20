@@ -83,7 +83,7 @@ rm -rf %{buildroot}%{_docdir}/uriparser-doc
 %{_libdir}/*.so.%{major}*
 
 %files -n %{develname}
-%doc doc/html
+#doc doc/html
 %{_datadir}/doc/%{name}/html/*
 %{_includedir}/*
 %{_libdir}/*.so
