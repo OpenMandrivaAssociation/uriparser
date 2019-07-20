@@ -51,9 +51,7 @@ iconv -f iso-8859-1 -t utf-8 -o THANKS{.utf8,}
 mv THANKS{.utf8,}
 
 %build
-	
 %cmake
-	
 %make_build
 
 #pushd doc
@@ -72,7 +70,7 @@ mv THANKS{.utf8,}
 	
 %install
 	
-%make_install
+%make_install -C build
 
 find %{buildroot} -name '*.la' -exec rm -f {} ';'
 rm -rf %{buildroot}%{_docdir}/uriparser-doc
