@@ -1,6 +1,7 @@
 %define	major 1
-%define libname	%mklibname uriparser %{major}
-%define develname %mklibname -d uriparser
+%define libname	%mklibname uriparser
+%define devname %mklibname uriparser -d
+%define oldlibname %mklibname uriparser 1
 
 Summary:	URI parsing library - RFC 3986
 Name:		uriparser
@@ -10,7 +11,6 @@ Group:		System/Libraries
 License:	BSD
 URL:		https://uriparser.sourceforge.net
 Source0:	https://github.com/uriparser/uriparser/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2
-Patch0:		uriparser-0.7.5-doc_Makefile_in.patch
 BuildRequires:  cmake
 BuildRequires:	cpptest-devel
 BuildRequires:	doxygen
@@ -18,38 +18,58 @@ BuildRequires:	graphviz
 BuildRequires:	pkgconfig
 BuildRequires:	pkgconfig(gtest)
 
+BuildSystem:	cmake
+
 %description
 Uriparser is a strictly RFC 3986 compliant URI parsing library written in C.
 uriparser is cross-platform, fast, supports Unicode and is licensed under the
 New BSD license.
 
-%package -n	%{libname}
+%files
+%{_bindir}/uriparse
+
+#----------------------------------------------------------------------
+
+%package -n %{libname}
 Summary:	URI parsing library - RFC 3986
 Group:          System/Libraries
+%rename	%{oldlibname}
 
 %description -n	%{libname}
 Uriparser is a strictly RFC 3986 compliant URI parsing library written in C.
 uriparser is cross-platform, fast, supports Unicode and is licensed under the
 New BSD license.
 
-%package -n	%{develname}
+%files -n %{libname}
+%doc THANKS AUTHORS COPYING ChangeLog
+%{_libdir}/*.so.%{major}*
+%{_libdir}/cmake/%{name}-%{version}/*
+
+#----------------------------------------------------------------------
+
+%package -n %{devname}
 Summary:	Development files for the uriparser library
 Group:		Development/C
 Provides:	%{name}-devel = %{version}
 Requires:	%{libname} >= %{version}
 
-%description -n	%{develname}
+%description -n	%{devname}
 This package contains libraries and header files for developing applications
 that use uriparser.
 
-%prep
+%files -n %{devname}
+#doc doc/html
+%{_datadir}/doc/%{name}/html/*
+%{_includedir}/*
+%{_libdir}/*.so
+%{_libdir}/pkgconfig/*.pc
 
-%setup -qn %{name}-%{version}
+#prep
+#autosetup -p1 -n %{name}-%{version}
 
-
-%build
-%cmake
-%make_build
+#build
+#cmake
+#make_build
 
 #pushd doc
 #    autoreconf -fi
@@ -65,24 +85,11 @@ that use uriparser.
 #popd
 
 	
-%install
-	
-%make_install -C build
+#install
+#make_install -C build
 
-find %{buildroot} -name '*.la' -exec rm -f {} ';'
-rm -rf %{buildroot}%{_docdir}/uriparser-doc
+#find %{buildroot} -name '*.la' -exec rm -f {} ';'
+#rm -rf %{buildroot}%{_docdir}/uriparser-doc
 
-%files
-%{_bindir}/uriparse
 
-%files -n %{libname}
-%doc THANKS AUTHORS COPYING ChangeLog
-%{_libdir}/*.so.%{major}*
-%{_libdir}/cmake/%{name}-%{version}/*
 
-%files -n %{develname}
-#doc doc/html
-%{_datadir}/doc/%{name}/html/*
-%{_includedir}/*
-%{_libdir}/*.so
-%{_libdir}/pkgconfig/*.pc
