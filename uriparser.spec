@@ -15,6 +15,7 @@ BuildRequires:  cmake
 BuildRequires:	cpptest-devel
 BuildRequires:	doxygen
 BuildRequires:	graphviz
+BuildRequires:	lzip
 BuildRequires:	pkgconfig
 BuildRequires:	pkgconfig(gtest)
 
