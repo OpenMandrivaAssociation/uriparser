@@ -42,7 +42,7 @@ uriparser is cross-platform, fast, supports Unicode and is licensed under the
 New BSD license.
 
 %files -n %{libname}
-%doc THANKS AUTHORS COPYING ChangeLog
+%doc THANKS AUTHORS ChangeLog
 %{_libdir}/*.so.%{major}*
 %{_libdir}/cmake/%{name}-%{version}/*
 
